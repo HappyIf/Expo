@@ -11,4 +11,5 @@ function showFile(input) {
 	.expandDims();
 
     let predictions = await model.predict(tensor).data();
+    console.log(predictions);
   }
