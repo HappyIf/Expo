@@ -1,65 +1,58 @@
-var model;
-var input = document.getElementById('imageInput');
-var Predict = document.getElementById("pre_btn");
+var model, modelPath='model.json';
+async function loadModel() {
+// model = await tf.loadModel('model.json');
+ model = await tf.loadLayersModel(modelPath);
 
-async function load() {
-    model = await tf.loadLayersModel('model.json');
+ predictImage(model);
 }
-const imageInput = document.getElementById('imageInput');
-let image;
-var tfResizedImage;
-
-imageInput.addEventListener('change', function (event) {
-  const file = event.target.files[0];
-  const reader = new FileReader();
-
-  reader.onload = function (e) {
-    const img = new Image();
-
-    img.onload = function () {
-      // Create a canvas and context
-      var canvas = document.createElement('canvas');
-      var ctx = canvas.getContext('2d');
-
-      // Set the desired width and height
-      var targetWidth = 96;
-      var targetHeight = 96;
-
-      // Resize the image on the canvas
-      canvas.width = targetWidth;
-      canvas.height = targetHeight;
-      ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
-
-      // Get the resized image data as a URL or base64-encoded data
-      var resizedImageData = canvas.toDataURL('image/jpeg'); // Change 'image/jpeg' to the desired format
-
-      // 'resizedImageData' now contains the resized image data
-
-      // Convert the resized image data to TensorFlow.js tensor
-      var tfImage = tf.browser.fromPixels(canvas); // Convert canvas to TensorFlow.js tensor
-       tfResizedImage = tfImage.expandDims(); // Add a batch dimension
-      console.log(tfResizedImage);
-      // Use 'tfResizedImage' in your TensorFlow.js model
-    };
-
-    img.src = e.target.result;
-  };
-
-  reader.readAsDataURL(file);
-});
-
-async function find() {
-    // let file = input.files[0];
+loadModel();
+async function showFile(input) {
+    let file = input.files[0];
   
-    // let reader = new FileReader();
+    let reader = new FileReader();
 
-	// let tensor = tf.fromPixels(file)
-	// .resizeNearestNeighbor([96,96]) // change the image size here
-	// .toFloat()
-	// .div(tf.scalar(255.0))
-	// .expandDims();
+	let tensor = tf.fromPixels(file)
+	.resizeNearestNeighbor([96,96]) // change the image size here
+	.toFloat()
+	.div(tf.scalar(255.0))
+	.expandDims();
 
-    let predictions = await model.predict(tfResizedImage).data();
-    console.log(predictions);
+    let predictions = await model.predict(tensor).data();
+    console.log(predictions[0]);
   }
-  load();
+
+function preProcess() {
+  // Assuming you have an HTML image element with an id of 'inputImage'
+var imageElement = document.getElementById('inputImage');
+
+// Create a TensorFlow.js tensor from the image
+var tfImage = tf.browser.fromPixels(imageElement);
+
+// Resize the image to match the expected input shape (96x96)
+var resizedImage = tf.image.resizeBilinear(tfImage, [96, 96]);
+
+// Normalize the pixel values to the range [0, 1]
+var normalizedImage = resizedImage.div(255);
+return normalizedImage;
+}
+
+async function predictImage(model) {
+  var normalizedImage = preProcess();
+  // Expand dimensions to match the expected input shape (add a batch dimension)
+  var batchedImage = normalizedImage.expandDims(0);
+
+  // Make predictions
+  var predictions = model.predict(batchedImage);
+
+  // Convert predictions to a JavaScript array
+  var predictionsArray = await predictions.array();
+  var value = predictionsArray[0][0];
+  console.log(value*100);
+}
+
+        // Function to handle image selection
+        function selectImage(imageUrl) {
+          const selectedImage = document.getElementById('inputImage');
+          selectedImage.src = imageUrl;
+          predictImage(model);
+      }

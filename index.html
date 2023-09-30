@@ -2,12 +2,34 @@
 <html>
     <head>
       <link rel="stylesheet" href="style.css">
-      <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.6.0/dist/tf.min.js"></script>  -->
+      <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>  -->
+      <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     </head>
     <body>
-      <input type="file" id="imageInput" accept="image/*">
-
-        <button id="pre_btn">Predict</button>
+        <input type="file" style="display:none;" onchange="showFile(this)">
+        <img id="inputImage" src="Tuberculosis-171.png" width="96" height="96" alt="Input Image">
+        
+        <h1>Image Selector</h1>
+    
+        <!-- Display the selected image -->
+        <!-- <div class="image-container">
+            <img id="selected-image" src="" alt="Selected Image">
+        </div> -->
+        
+        <!-- List of images to select from -->
+        <ul class="image-list">
+            <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">
+                <img class="image-thumbnail" src="Tuberculosis-1.png" alt="Image 1">
+            </li>
+            <li class="image-list-item" onclick="selectImage('Tuberculosis-171.png')">
+                <img class="image-thumbnail" src="Tuberculosis-171.png" alt="Image 2">
+            </li>
+            <li class="image-list-item" onclick="selectImage('Normal-1044.png')">
+                <img class="image-thumbnail" src="Normal-1044.png" alt="Image 3">
+            </li>
+        </ul>
+        
         <script src="script.js"></script>
     </body>
 </html>
