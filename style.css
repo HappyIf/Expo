@@ -4,6 +4,11 @@
             /* background-color: #f4f4f4; */
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
         /* Header styling */
@@ -21,11 +26,21 @@
             margin: 20px;
         }
 
+        .text {
+            text-align: center;
+            background-color: hsl(212, 48%, 23%);
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+            border-radius: 10px;
+        }
         /* Selected image styling */
-        #selected-image {
-            max-width: 100%;
+        #inputImage {
+            max-width: 90%; /* Adjust the maximum width as needed */
+            max-height: 500px; /* Adjust the maximum height as needed */
             border: 2px solid #007BFF;
             border-radius: 10px;
+            transition: max-width 0.3s ease-in-out, max-height 0.3s ease-in-out;
         }
 
         /* Button styling */
@@ -39,6 +54,7 @@
         }
 
         /* Modal styling */
+        /* Modal animation */
         .modal {
             display: none;
             position: fixed;
@@ -48,7 +64,15 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.7);
             z-index: 1;
-            overflow: auto;
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .modal.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .modal-content {
@@ -57,6 +81,8 @@
             padding: 20px;
             max-width: 80%;
             border-radius: 5px;
+            overflow: auto; /* Enable vertical scrolling */
+            max-height: 90%; /* Limit the maximum height of the modal content */
         }
 
         /* Close button styling */
@@ -65,23 +91,27 @@
             top: 10px;
             right: 10px;
             cursor: pointer;
+            font-size: 32px; /* Adjust the font size as needed */
+            padding: 10px; /* Adjust the padding as needed */
         }
 
-        /* Image list styling */
+        /* Grid layout for the image list */
         .image-list {
             list-style: none;
             padding: 0;
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
+            gap: 10px; /* Adjust the gap between items as needed */
+            justify-items: center;
         }
 
-        /* Image item styling */
+        /* Styling for each image item */
         .image-list-item {
-            margin: 10px;
             cursor: pointer;
             border: 2px solid transparent;
             border-radius: 10px;
             transition: border 0.3s ease-in-out;
+            max-width: 100%; /* Ensure images don't exceed their container width */
         }
 
         .image-list-item:hover {
@@ -90,7 +120,7 @@
 
         /* Thumbnail styling */
         .image-thumbnail {
-            max-width: 100px;
-            max-height: 100px;
+            max-width: 100%;
+            max-height: 100%;
             border-radius: 10px;
         }

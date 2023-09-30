@@ -48,7 +48,7 @@ async function predictImage(model) {
   var predictionsArray = await predictions.array();
   var value = predictionsArray[0][0];
   // console.log(value*100);
-  result.innerHTML= value*100+"%";
+  result.innerHTML= value*100+" %";
 }
 
         // Function to handle image selection
@@ -59,14 +59,19 @@ async function predictImage(model) {
           closeModal();
       }
 
-              // Function to open the modal
-              function openModal() {
-                const modal = document.getElementById('myModal');
-                modal.style.display = 'block';
-            }
-    
-            // Function to close the modal
-            function closeModal() {
-                const modal = document.getElementById('myModal');
-                modal.style.display = 'none';
-            }
+      function openModal() {
+        const modal = document.getElementById('myModal');
+        modal.style.display = 'block';
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 10);
+    }
+
+    // Function to close the modal with animation
+    function closeModal() {
+        const modal = document.getElementById('myModal');
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300); // Wait for the transition to complete before hiding
+    }

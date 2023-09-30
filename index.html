@@ -12,8 +12,8 @@
         
     <!-- Display the selected image -->
     <div class="container">
-      <img id="inputImage" src="Tuberculosis-171.png" width="96" height="96" alt="Input Image">
-      <button class="btn" onclick="openModal()">Open Modal</button>
+      <img id="inputImage" src="Tuberculosis-171.png" width="192" height="192" alt="Input Image"><br>
+      <br><button class="btn" onclick="openModal()">Select Images</button>
   </div>
 
   <!-- The Modal -->
@@ -32,11 +32,57 @@
             <li class="image-list-item" onclick="selectImage('Normal-1044.png')">
                 <img class="image-thumbnail" src="Normal-1044.png" alt="Image 3">
             </li>
+
+            <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">
+              <img class="image-thumbnail" src="Tuberculosis-1.png" alt="Image 1">
+          </li>
+          <li class="image-list-item" onclick="selectImage('Tuberculosis-171.png')">
+              <img class="image-thumbnail" src="Tuberculosis-171.png" alt="Image 2">
+          </li>
+          <li class="image-list-item" onclick="selectImage('Normal-1044.png')">
+              <img class="image-thumbnail" src="Normal-1044.png" alt="Image 3">
+          </li>            <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">
+                <img class="image-thumbnail" src="Tuberculosis-1.png" alt="Image 1">
+            </li>
+            <li class="image-list-item" onclick="selectImage('Tuberculosis-171.png')">
+                <img class="image-thumbnail" src="Tuberculosis-171.png" alt="Image 2">
+            </li>
+            <li class="image-list-item" onclick="selectImage('Normal-1044.png')">
+                <img class="image-thumbnail" src="Normal-1044.png" alt="Image 3">
+            </li>
+            <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">
+              <img class="image-thumbnail" src="Tuberculosis-1.png" alt="Image 1">
+          </li>
+          <li class="image-list-item" onclick="selectImage('Tuberculosis-171.png')">
+              <img class="image-thumbnail" src="Tuberculosis-171.png" alt="Image 2">
+          </li>
+          <li class="image-list-item" onclick="selectImage('Normal-1044.png')">
+              <img class="image-thumbnail" src="Normal-1044.png" alt="Image 3">
+          </li>
+          <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">
+            <img class="image-thumbnail" src="Tuberculosis-1.png" alt="Image 1">
+        </li>
+        <li class="image-list-item" onclick="selectImage('Tuberculosis-171.png')">
+            <img class="image-thumbnail" src="Tuberculosis-171.png" alt="Image 2">
+        </li>
+        <li class="image-list-item" onclick="selectImage('Normal-1044.png')">
+            <img class="image-thumbnail" src="Normal-1044.png" alt="Image 3">
+        </li>
+        <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">
+          <img class="image-thumbnail" src="Tuberculosis-1.png" alt="Image 1">
+      </li>
+      <li class="image-list-item" onclick="selectImage('Tuberculosis-171.png')">
+          <img class="image-thumbnail" src="Tuberculosis-171.png" alt="Image 2">
+      </li>
+      <li class="image-list-item" onclick="selectImage('Normal-1044.png')">
+          <img class="image-thumbnail" src="Normal-1044.png" alt="Image 3">
+      </li>
         </ul>
       </div>
   </div>
 
-        Prediction Results:<p id="result"></p>
+        <p class="text">Prediction Results:</p>
+        <p style="color:aqua;" id="result"></p>
         <script src="script.js"></script>
     </body>
 </html>
