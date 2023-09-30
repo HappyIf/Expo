@@ -1,16 +1,73 @@
-        /* Style for the image container */
-        .image-container {
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            /* background-color: #f4f4f4; */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styling */
+        h1 {
+            text-align: center;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* Container styling */
+        .container {
             text-align: center;
             margin: 20px;
         }
 
-        /* Style for the selected image */
+        /* Selected image styling */
         #selected-image {
-            max-width: 300px;
-            max-height: 300px;
+            max-width: 100%;
+            border: 2px solid #007BFF;
+            border-radius: 10px;
         }
 
-        /* Style for the image list */
+        /* Button styling */
+        .btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 80%;
+            border-radius: 5px;
+        }
+
+        /* Close button styling */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        /* Image list styling */
         .image-list {
             list-style: none;
             padding: 0;
@@ -18,71 +75,22 @@
             justify-content: center;
         }
 
-        /* Style for each image item in the list */
+        /* Image item styling */
         .image-list-item {
             margin: 10px;
             cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            transition: border 0.3s ease-in-out;
         }
 
-        /* Style for the image thumbnails */
+        .image-list-item:hover {
+            border-color: #007BFF;
+        }
+
+        /* Thumbnail styling */
         .image-thumbnail {
             max-width: 100px;
             max-height: 100px;
+            border-radius: 10px;
         }
-                /* General styling */
-                body {
-                    font-family: Arial, sans-serif;
-                    background-color: #464646;
-                    margin: 0;
-                    padding: 0;
-                }
-        
-                /* Header styling */
-                h1 {
-                    text-align: center;
-                    background-color: #007BFF;
-                    color: #fff;
-                    padding: 20px;
-                    margin: 0;
-                }
-        
-                /* Container styling */
-                .container {
-                    text-align: center;
-                    margin: 20px;
-                }
-        
-                /* Selected image styling */
-                #selected-image {
-                    max-width: 100%;
-                    border: 2px solid #007BFF;
-                    border-radius: 10px;
-                }
-        
-                /* Image list styling */
-                .image-list {
-                    list-style: none;
-                    padding: 0;
-                    display: flex;
-                    justify-content: center;
-                }
-        
-                /* Image item styling */
-                .image-list-item {
-                    margin: 10px;
-                    cursor: pointer;
-                    border: 2px solid transparent;
-                    border-radius: 10px;
-                    transition: border 0.3s ease-in-out;
-                }
-        
-                .image-list-item:hover {
-                    border-color: #007BFF;
-                }
-        
-                /* Thumbnail styling */
-                .image-thumbnail {
-                    max-width: 100px;
-                    max-height: 100px;
-                    border-radius: 10px;
-                }

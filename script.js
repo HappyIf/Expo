@@ -1,4 +1,4 @@
-var model, modelPath='model.json';
+var model, modelPath='model.json', result=document.getElementById("result");
 async function loadModel() {
 // model = await tf.loadModel('model.json');
  model = await tf.loadLayersModel(modelPath);
@@ -47,7 +47,8 @@ async function predictImage(model) {
   // Convert predictions to a JavaScript array
   var predictionsArray = await predictions.array();
   var value = predictionsArray[0][0];
-  console.log(value*100);
+  // console.log(value*100);
+  result.innerHTML= value*100+"%";
 }
 
         // Function to handle image selection
@@ -55,4 +56,17 @@ async function predictImage(model) {
           const selectedImage = document.getElementById('inputImage');
           selectedImage.src = imageUrl;
           predictImage(model);
+          closeModal();
       }
+
+              // Function to open the modal
+              function openModal() {
+                const modal = document.getElementById('myModal');
+                modal.style.display = 'block';
+            }
+    
+            // Function to close the modal
+            function closeModal() {
+                const modal = document.getElementById('myModal');
+                modal.style.display = 'none';
+            }
