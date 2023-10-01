@@ -34,7 +34,7 @@
             background-color: hsl(212, 48%, 23%);
             color: #fff;
             padding: 20px;
-            margin: 0;
+            margin-top: 10px;
             border-radius: 10px;
         }
         /* Selected image styling */
