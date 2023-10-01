@@ -2,13 +2,13 @@
 <html>
     <head>
       <link rel="stylesheet" href="style.css">
-      <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.6.0/dist/tf.min.js"></script>  -->
-      <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>  -->
+      <!--FOR ONLINE-->
       <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+      <!-- FOR OFFLINE -->
+      <!-- <script src="tfjs.js"></script> -->
     </head>
     <body>
         <input type="file" style="display:none;" onchange="showFile(this)">
-        
         
     <!-- Display the selected image -->
     <div class="container">
@@ -23,66 +23,27 @@
           <h2>Image List</h2>
           <!-- List of images to select from -->
         <ul class="image-list">
-            <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">
+            <!-- <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">
                 <img class="image-thumbnail" src="Tuberculosis-1.png" alt="Image 1">
-            </li>
+            </li> -->
             <li class="image-list-item" onclick="selectImage('Tuberculosis-171.png')">
-                <img class="image-thumbnail" src="Tuberculosis-171.png" alt="Image 2">
+                <img id="refImage" class="image-thumbnail" src="Tuberculosis-171.png" alt="Image 2">
             </li>
             <li class="image-list-item" onclick="selectImage('Normal-1044.png')">
                 <img class="image-thumbnail" src="Normal-1044.png" alt="Image 3">
             </li>
-
-            <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">
-              <img class="image-thumbnail" src="Tuberculosis-1.png" alt="Image 1">
-          </li>
-          <li class="image-list-item" onclick="selectImage('Tuberculosis-171.png')">
-              <img class="image-thumbnail" src="Tuberculosis-171.png" alt="Image 2">
-          </li>
-          <li class="image-list-item" onclick="selectImage('Normal-1044.png')">
-              <img class="image-thumbnail" src="Normal-1044.png" alt="Image 3">
-          </li>            <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">
-                <img class="image-thumbnail" src="Tuberculosis-1.png" alt="Image 1">
-            </li>
-            <li class="image-list-item" onclick="selectImage('Tuberculosis-171.png')">
-                <img class="image-thumbnail" src="Tuberculosis-171.png" alt="Image 2">
-            </li>
-            <li class="image-list-item" onclick="selectImage('Normal-1044.png')">
-                <img class="image-thumbnail" src="Normal-1044.png" alt="Image 3">
-            </li>
-            <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">
-              <img class="image-thumbnail" src="Tuberculosis-1.png" alt="Image 1">
-          </li>
-          <li class="image-list-item" onclick="selectImage('Tuberculosis-171.png')">
-              <img class="image-thumbnail" src="Tuberculosis-171.png" alt="Image 2">
-          </li>
-          <li class="image-list-item" onclick="selectImage('Normal-1044.png')">
-              <img class="image-thumbnail" src="Normal-1044.png" alt="Image 3">
-          </li>
-          <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">
-            <img class="image-thumbnail" src="Tuberculosis-1.png" alt="Image 1">
-        </li>
-        <li class="image-list-item" onclick="selectImage('Tuberculosis-171.png')">
-            <img class="image-thumbnail" src="Tuberculosis-171.png" alt="Image 2">
-        </li>
-        <li class="image-list-item" onclick="selectImage('Normal-1044.png')">
-            <img class="image-thumbnail" src="Normal-1044.png" alt="Image 3">
-        </li>
-        <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">
-          <img class="image-thumbnail" src="Tuberculosis-1.png" alt="Image 1">
-      </li>
-      <li class="image-list-item" onclick="selectImage('Tuberculosis-171.png')">
-          <img class="image-thumbnail" src="Tuberculosis-171.png" alt="Image 2">
-      </li>
-      <li class="image-list-item" onclick="selectImage('Normal-1044.png')">
-          <img class="image-thumbnail" src="Normal-1044.png" alt="Image 3">
-      </li>
         </ul>
+
+        <p style="" class="" id="loadMoreButton"></p>
+
       </div>
   </div>
 
-        <p class="text">Prediction Results:</p>
-        <p style="color:aqua;" id="result"></p>
+        <div class="text">
+            <div id="mAlert">Model is Being Loaded !!</div>
+            <div id="alert" style="display: none;">Prediction Results: <p style="color:aqua;" id="result"></p></div>
+        </div>
+        
         <script src="script.js"></script>
     </body>
 </html>
