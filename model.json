@@ -363,7 +363,7 @@
     "weightsManifest": [
         {
             "paths": [
-                "https://happyif.github.io/Expo/group1-shard1of1.bin"
+                "Expo/group1-shard1of1.bin"
             ],
             "weights": [
                 {
