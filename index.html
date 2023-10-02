@@ -2,11 +2,12 @@
 <html>
     <head>
       <link rel="stylesheet" href="style.css">
-      <base href="/Expo">
       <!--FOR ONLINE-->
       <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
       <!-- FOR OFFLINE -->
       <!-- <script src="tfjs.js"></script> -->
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <input type="file" style="display:none;" onchange="showFile(this)">
@@ -14,14 +15,14 @@
     <!-- Display the selected image -->
     <div class="container">
       <img id="inputImage" src="Tuberculosis-171.png" width="192" height="192" alt="Input Image"><br>
-      <br><button class="btn" onclick="openModal()">Select Images</button>
+      <br><button class="btn" id="selImg">Select Images</button>
   </div>
 
   <!-- The Modal -->
   <div id="myModal" class="modal">
       <div class="modal-content">
           <span class="close" onclick="closeModal()">&times;</span>
-          <h2>Image List</h2>
+          <h2><i>Select a X-Ray</i></h2>
           <!-- List of images to select from -->
         <ul class="image-list">
             <!-- <li class="image-list-item" onclick="selectImage('Tuberculosis-1.png')">

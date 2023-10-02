@@ -4,7 +4,7 @@
             /* background-color: #f4f4f4; */
                 border-color: #736b5e;
                 color: #e8e6e3;
-                background-color: #181a1b;
+                background-color: #131516;
             margin: 0;
             padding: 0;
             display: flex;
@@ -235,13 +235,13 @@
     color: #fff;
     background-color: #007BFF;
     border: none;
-    box-shadow: 0 9px #80bdff;
+    box-shadow: 0 9px #003d7f;
   } 
   
   .btn:hover {background-color: #1785fc}
   
   .btn:active {
     background-color: #1785fc;
-    box-shadow: 0 5px #80bdff;
+    box-shadow: 0 5px #003d7f;
     transform: translateY(4px);
   }

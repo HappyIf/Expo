@@ -1,4 +1,6 @@
 var model, modelPath = 'model.json', result = document.getElementById("result");
+const selectedImage = document.getElementById('inputImage');
+
 async function loadModel() {
   // model = await tf.loadModel('model.json');
   model = await tf.loadLayersModel(modelPath);
@@ -6,21 +8,17 @@ async function loadModel() {
   document.getElementById("mAlert").style.display = "none";
   document.getElementById("alert").style.display = "block";
   predictImage(model);
+  document.getElementById("selImg").setAttribute("onclick", "openModal()");
 }
 loadModel();
+
+//not working
 async function showFile(input) {
   let file = input.files[0];
 
   let reader = new FileReader();
 
-  let tensor = tf.fromPixels(file)
-    .resizeNearestNeighbor([96, 96]) // change the image size here
-    .toFloat()
-    .div(tf.scalar(255.0))
-    .expandDims();
-
-  let predictions = await model.predict(tensor).data();
-  console.log(predictions[0]);
+  selectedImage.src = file.src;
 }
 
 function preProcess() {
@@ -51,7 +49,7 @@ async function predictImage(model) {
   var value = (predictionsArray * 100).toFixed(decimalPlaces);//[0][0];
   // console.log(value*100);
   let resultMessage = '';
-  if (value >= 50) {
+  if (value >= 60) {
     resultMessage = `Tuberculosis <i style='color: red;'>positive</i>`;
   } else {
     resultMessage = `Tuberculosis <i style='color: green;'>negative</i>`;
@@ -61,28 +59,44 @@ async function predictImage(model) {
 
 // Function to handle image selection
 function selectImage(imageUrl) {
-  const selectedImage = document.getElementById('inputImage');
   selectedImage.src = imageUrl;
   predictImage(model);
   closeModal();
 }
 
+// Function to open the modal with animation and update history
 function openModal() {
   const modal = document.getElementById('myModal');
   modal.style.display = 'block';
   setTimeout(() => {
     modal.classList.add('show');
   }, 10);
+
+  // Push a state to the browser's history when the modal is opened
+  window.history.pushState({ modal: 'open' }, 'Modal Open', '#modal');
 }
 
-// Function to close the modal with animation
+// Function to close the modal with animation and update history
 function closeModal() {
   const modal = document.getElementById('myModal');
   modal.classList.remove('show');
   setTimeout(() => {
     modal.style.display = 'none';
   }, 300); // Wait for the transition to complete before hiding
+
+  // Push a state to the browser's history when the modal is closed
+  window.history.pushState({ modal: 'close' }, 'Modal Close', './');
 }
+
+// Event listener to handle browser back button
+window.addEventListener('popstate', function(event) {
+  const modal = document.getElementById('myModal');
+  if (event.state && event.state.modal === 'open') {
+    openModal();
+  } else {
+    closeModal();
+  }
+});
 
 const loadMoreButton = document.getElementById('loadMoreButton');
 loadMoreButton.addEventListener('click', loadMoreImages);
@@ -146,7 +160,7 @@ function loadMoreImages() {
 
     // Create an Image element to load the actual image
     var imgElement = new Image();
-    imgElement.display = 'none';
+    imgElement.opacity = 0;
     imgElement.src = imageUrl;
     imgElement.alt = `Image ${i + 1}`;
     listItem.appendChild(imgElement);
@@ -159,7 +173,7 @@ function loadMoreImages() {
       if (skeletonImage) {
         listItem.removeChild(skeletonImage);
         //listItem.appendChild(imgElement);
-        imgElement.display = 'block';
+        imgElement.opacity = 1;
       }
     });
     imageList.appendChild(listItem);
