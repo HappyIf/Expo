@@ -2,9 +2,9 @@
         body {
             font-family: Arial, sans-serif;
             /* background-color: #f4f4f4; */
-                border-color: #736b5e;
-                color: #e8e6e3;
-                background-color: #131516;
+            border-color: #736b5e;
+            color: #e8e6e3;
+            background-color: #131516;
             margin: 0;
             padding: 0;
             display: flex;
@@ -37,13 +37,30 @@
             margin-top: 10px;
             border-radius: 10px;
         }
+
         /* Selected image styling */
         #inputImage {
-            max-width: 90%; /* Adjust the maximum width as needed */
-            max-height: 500px; /* Adjust the maximum height as needed */
+            max-width: 90%;
+            /* Adjust the maximum width as needed */
+            max-height: 500px;
+            /* Adjust the maximum height as needed */
             border: 2px solid #007BFF;
             border-radius: 10px;
             transition: max-width 0.3s ease-in-out, max-height 0.3s ease-in-out;
+        }
+
+        #fileUpload {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            /* Add a transition for background color */
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         /* Button styling */
@@ -84,8 +101,37 @@
             padding: 20px;
             max-width: 80%;
             border-radius: 5px;
-            overflow: auto; /* Enable vertical scrolling */
-            max-height: 90%; /* Limit the maximum height of the modal content */
+            overflow: auto;
+            /* Enable vertical scrolling */
+            max-height: 90%;
+            /*  Limit the maximum height of the modal content */
+            position: relative;
+            overflow-y: auto;
+        }
+
+        /* Styles for the file input container */
+        .file-input-container {
+            position: sticky;
+            bottom: 0;
+            background-color: #131516;
+            padding: 20px;
+            text-align: left;
+            margin: 0;
+        }
+
+        /* Styles for the file input */
+        .file-input {
+            display: none;
+        }
+
+        .file-label {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         /* Close button styling */
@@ -94,8 +140,10 @@
             top: 10px;
             right: 10px;
             cursor: pointer;
-            font-size: 32px; /* Adjust the font size as needed */
-            padding: 10px; /* Adjust the padding as needed */
+            font-size: 32px;
+            /* Adjust the font size as needed */
+            padding: 10px;
+            /* Adjust the padding as needed */
         }
 
         /* Grid layout for the image list */
@@ -103,8 +151,10 @@
             list-style: none;
             padding: 0;
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
-            gap: 10px; /* Adjust the gap between items as needed */
+            grid-template-columns: repeat(4, 1fr);
+            /* Adjust the number of columns as needed */
+            gap: 10px;
+            /* Adjust the gap between items as needed */
             justify-items: center;
         }
 
@@ -114,7 +164,8 @@
             border: 2px solid transparent;
             border-radius: 10px;
             transition: border 0.3s ease-in-out;
-            max-width: 100%; /* Ensure images don't exceed their container width */
+            max-width: 100%;
+            /* Ensure images don't exceed their container width */
         }
 
         .image-list-item:hover {
@@ -128,120 +179,127 @@
             border-radius: 10px;
         }
 
-    /* Responsive */
-    /* Common styles for all screen sizes */
-    body {
-        font-family: Arial, sans-serif;
-    }
-
-    .container {
-        text-align: center;
-        margin: 20px;
-    }
-
-    .btn {
-        background-color: #007BFF;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-    }
-
-    /* Styles for larger screens (desktop) */
-    @media (min-width: 1024px) {
-        h1 {
-            font-size: 32px;
+        /* Responsive */
+        /* Common styles for all screen sizes */
+        body {
+            font-family: Arial, sans-serif;
         }
 
         .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+            text-align: center;
+            margin: 20px;
         }
 
-        /* Adjust the number of columns for larger screens */
-        .image-list {
-            grid-template-columns: repeat(4, 1fr); /* 4 columns */
-        }
-    }
-
-    /* Styles for tablets (landscape) */
-    @media (min-width: 768px) and (max-width: 1023px) {
-        h1 {
-            font-size: 28px;
+        .btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
         }
 
-        .container {
-            margin: 10px;
+        /* Styles for larger screens (desktop) */
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            /* Adjust the number of columns for larger screens */
+            .image-list {
+                grid-template-columns: repeat(4, 1fr);
+                /* 4 columns */
+            }
         }
 
-        /* Adjust the number of columns for tablets (landscape) */
-        .image-list {
-            grid-template-columns: repeat(3, 1fr); /* 3 columns */
-        }
-    }
+        /* Styles for tablets (landscape) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            h1 {
+                font-size: 28px;
+            }
 
-    /* Styles for smaller screens (mobile) */
-    @media (max-width: 767px) {
-        h1 {
-            font-size: 24px;
-        }
+            .container {
+                margin: 10px;
+            }
 
-        .container {
-            margin: 10px;
-        }
-
-        .modal-content {
-            max-width: 90%;
+            /* Adjust the number of columns for tablets (landscape) */
+            .image-list {
+                grid-template-columns: repeat(3, 1fr);
+                /* 3 columns */
+            }
         }
 
-        /* Adjust the number of columns for smaller screens (mobile) */
-        .image-list {
-            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        /* Styles for smaller screens (mobile) */
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                margin: 10px;
+            }
+
+            .modal-content {
+                max-width: 90%;
+            }
+
+            /* Adjust the number of columns for smaller screens (mobile) */
+            .image-list {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 columns */
+            }
         }
-    }
 
-    /* Responsive images */
-    .image-thumbnail {
-        max-width: 100%;
-        height: auto;
-    }
+        /* Responsive images */
+        .image-thumbnail {
+            max-width: 100%;
+            height: auto;
+        }
 
-    /* Style for the skeleton loading placeholder */
-.skeleton-image {
-    background-color: #202325;
-    animation: loading 1s infinite ease-in-out;
-    border-radius: 10px;
-  }
-  
-  @keyframes loading {
-    0% {
-      opacity: 0.7;
-    }
-    50% {
-      opacity: 0.9;
-    }
-    100% {
-      opacity: 0.7;
-    }
-  }
+        /* Style for the skeleton loading placeholder */
+        .skeleton-image {
+            background-color: #202325;
+            animation: loading 1s infinite ease-in-out;
+            border-radius: 10px;
+        }
 
-   .btn {
-    padding: 15px 25px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: #007BFF;
-    border: none;
-    box-shadow: 0 9px #003d7f;
-  } 
-  
-  .btn:hover {background-color: #1785fc}
-  
-  .btn:active {
-    background-color: #1785fc;
-    box-shadow: 0 5px #003d7f;
-    transform: translateY(4px);
-  }
+        @keyframes loading {
+            0% {
+                opacity: 0.7;
+            }
+
+            50% {
+                opacity: 0.9;
+            }
+
+            100% {
+                opacity: 0.7;
+            }
+        }
+
+        .btn {
+            padding: 15px 25px;
+            text-align: center;
+            cursor: pointer;
+            outline: none;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            box-shadow: 0 9px #003d7f;
+        }
+
+        .btn:hover {
+            background-color: #1785fc
+        }
+
+        .btn:active {
+            background-color: #1785fc;
+            box-shadow: 0 5px #003d7f;
+            transform: translateY(4px);
+        }

@@ -12,14 +12,36 @@ async function loadModel() {
 }
 loadModel();
 
-//not working
-async function showFile(input) {
-  let file = input.files[0];
+function uploadImage() {
+  const imageInput = document.getElementById('fileUpload');
 
-  let reader = new FileReader();
+  // Check if a file is selected
+  if (imageInput.files.length === 0) {
+      alert('Please select an image file.');
+      return;
+  }
 
-  selectedImage.src = file.src;
+  // Access the selected file
+  const imageFile = imageInput.files[0];
+
+  // You can now work with the selected image file, such as uploading it to a server or processing it with JavaScript.
+  // For example, to display the image on the page, you can create an Image object and set its src attribute:
+  // const imageElement = new Image();
+  selectedImage.src = URL.createObjectURL(imageFile);
+  result.innerHTML = "Calculating...";
+  closeModal();
+  setTimeout(function() {
+    predictImage(model);
+}, 1000);
+  //
+  // Append the image to a div or other HTML element to display it
+  // const displayDiv = document.createElement('div');
+  // displayDiv.appendChild(imageElement);
+  // document.body.appendChild(displayDiv);
 }
+
+var imageInput = document.getElementById('fileUpload');
+        imageInput.addEventListener('change', uploadImage);
 
 function preProcess() {
   // Assuming you have an HTML image element with an id of 'inputImage'
@@ -54,7 +76,9 @@ async function predictImage(model) {
   } else {
     resultMessage = `Tuberculosis <i style='color: green;'>negative</i>`;
   }
-  result.innerHTML = resultMessage+`<br><br>Prediction Percent : ${value} %`;//value + " %";
+  result.innerHTML = resultMessage+`<br><br>TB presence Percent : ${value} %`;//value + " %";
+
+  console.log(value);
 }
 
 // Function to handle image selection
